@@ -3,6 +3,55 @@
    Sistema de Autenticación - StudyQuality
    ================================== */
 
+/* Header principal del sistema */
+.header {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding: 2rem 0;
+}
+
+.header-content h1 {
+  color: #1f2937;
+  font-size: 42px;
+  font-weight: 800;
+  margin-bottom: 12px;
+  letter-spacing: -1px;
+  line-height: 1.1;
+  background: linear-gradient(135deg, #1f2937 0%, #374151 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.header-content p {
+  color: #4b5563;
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 16px;
+  letter-spacing: 0.3px;
+}
+
+.version-info {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 0;
+}
+
+.version-info .version,
+.version-info .build {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #ffffff;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+}
+
 /* Contenedor principal de autenticación */
 .auth-section {
   background: #ffffff;
@@ -133,20 +182,20 @@
 }
 
 .form-header h2 {
-  color: #212529;
+  color: #111827;
   margin-bottom: 8px;
-  font-weight: 600;
+  font-weight: 700;
   font-size: 28px;
   letter-spacing: -0.5px;
   line-height: 1.2;
 }
 
 .form-header p {
-  color: #6c757d;
+  color: #374151;
   font-size: 15px;
   margin-bottom: 0;
   line-height: 1.4;
-  font-weight: 400;
+  font-weight: 500;
 }
 
 /* Formularios de autenticación */
@@ -162,9 +211,9 @@
 .form-group label {
   display: block;
   margin-bottom: 8px;
-  font-weight: 500;
-  color: #374151;
-  font-size: 14px;
+  font-weight: 600;
+  color: #1f2937;
+  font-size: 15px;
   letter-spacing: 0.01em;
 }
 
@@ -407,6 +456,19 @@
 
 /* Responsive */
 @media (max-width: 768px) {
+  .header-content h1 {
+    font-size: 36px;
+  }
+  
+  .header-content p {
+    font-size: 15px;
+  }
+  
+  .version-info {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  
   .auth-section {
     padding: 2rem 1.5rem;
     margin: 1rem;
@@ -435,6 +497,20 @@
 }
 
 @media (max-width: 480px) {
+  .header-content h1 {
+    font-size: 28px;
+  }
+  
+  .header-content p {
+    font-size: 14px;
+  }
+  
+  .version-info .version,
+  .version-info .build {
+    font-size: 11px;
+    padding: 5px 12px;
+  }
+  
   .auth-section {
     padding: 1.5rem 1rem;
     margin: 0.5rem;
@@ -457,6 +533,18 @@
 
 /* Modo oscuro */
 @media (prefers-color-scheme: dark) {
+  .header-content h1 {
+    color: #f9fafb;
+    background: linear-gradient(135deg, #f9fafb 0%, #e5e7eb 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  .header-content p {
+    color: #d1d5db;
+  }
+  
   .auth-section {
     background: #1f2937;
     border-color: #374151;
@@ -472,7 +560,8 @@
   }
   
   .form-group label {
-    color: #e5e7eb;
+    color: #f3f4f6;
+    font-weight: 600;
   }
   
   .form-group input,
