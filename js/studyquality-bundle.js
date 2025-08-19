@@ -804,9 +804,14 @@ function showBrowserCompatibilityError() {
 }
 
 // Inicializar cuando el DOM esté listo
+console.log('📦 StudyQuality Bundle iniciando...');
+console.log('📋 Estado del DOM:', document.readyState);
+
 if (document.readyState === 'loading') {
+    console.log('⏳ DOM cargando... esperando DOMContentLoaded');
     document.addEventListener('DOMContentLoaded', initializeApp);
 } else {
+    console.log('✅ DOM ya está listo, inicializando inmediatamente');
     initializeApp();
 }
 

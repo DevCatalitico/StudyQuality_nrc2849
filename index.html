@@ -457,6 +457,61 @@
 
     <!-- JavaScript Bundle - Versión compatible con GitHub Pages -->
     <script src="./js/studyquality-bundle.js"></script>
+    
+    <!-- Fallback en caso de error cargando el bundle -->
+    <script>
+        setTimeout(function() {
+            if (!window.studyQualityApp) {
+                console.warn('⚠️ Bundle no se cargó, iniciando versión de emergencia');
+                
+                // Ocultar pantalla de carga
+                const loadingScreen = document.getElementById('loadingScreen');
+                if (loadingScreen) {
+                    loadingScreen.style.display = 'none';
+                }
+                
+                // Mostrar formulario de login básico
+                const authSection = document.getElementById('authSection');
+                if (authSection) {
+                    authSection.style.display = 'block';
+                }
+                
+                // Configurar funcionalidad básica de demo
+                const demoBtn = document.getElementById('demoCredentialsBtn');
+                if (demoBtn) {
+                    demoBtn.addEventListener('click', function() {
+                        const emailInput = document.getElementById('loginEmail');
+                        const passwordInput = document.getElementById('loginPassword');
+                        if (emailInput) emailInput.value = 'admin@demo.com';
+                        if (passwordInput) passwordInput.value = 'demo123';
+                        alert('Credenciales demo cargadas: admin@demo.com / demo123');
+                    });
+                }
+                
+                // Funcionalidad básica de login
+                const loginForm = document.getElementById('loginForm');
+                if (loginForm) {
+                    loginForm.addEventListener('submit', function(e) {
+                        e.preventDefault();
+                        const email = document.getElementById('loginEmail').value;
+                        const password = document.getElementById('loginPassword').value;
+                        
+                        if (email === 'admin@demo.com' && password === 'demo123') {
+                            document.getElementById('authSection').style.display = 'none';
+                            document.getElementById('dashboardSection').style.display = 'block';
+                            document.getElementById('userName').textContent = 'Administrador Demo';
+                            document.getElementById('userEmail').textContent = email;
+                            alert('✅ Login exitoso - StudyQuality NRC2849');
+                        } else {
+                            alert('❌ Credenciales incorrectas. Use: admin@demo.com / demo123');
+                        }
+                    });
+                }
+                
+                console.log('✅ Versión de emergencia activada');
+            }
+        }, 3000);
+    </script>
 
     <!-- Service Worker Registration -->
     <script>
