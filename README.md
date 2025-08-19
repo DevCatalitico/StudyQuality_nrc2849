@@ -8,6 +8,8 @@
 
 Sistema de gestión de usuarios desarrollado aplicando los principios de **Calidad de Software** de Guillermo Pantaleo. Este proyecto implementa un prototipo funcional que demuestra la aplicación práctica de metodologías de desarrollo de calidad, incluyendo **Integración Continua**, validación robusta y pruebas automatizadas.
 
+**NRC-2849 - Análisis y Diseño de Sistemas de Información (Ingeniería de Sistemas)**
+
 ## 📋 Características Principales
 
 ### ✅ Funcionalidades Implementadas
