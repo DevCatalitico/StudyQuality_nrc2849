@@ -19,6 +19,62 @@
   display: block;
 }
 
+/* Forzar todos los textos del dashboard a blanco */
+.dashboard,
+.dashboard *,
+.dashboard h1,
+.dashboard h2,
+.dashboard h3,
+.dashboard h4,
+.dashboard h5,
+.dashboard h6,
+.dashboard p,
+.dashboard span,
+.dashboard label,
+.dashboard li,
+.dashboard td,
+.dashboard th,
+.dashboard div {
+  color: #ffffff !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* IDs específicos del dashboard */
+#userName,
+#userRole,
+#userStatus,
+#userAvatar {
+  color: #ffffff !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Botones y enlaces en el dashboard */
+.dashboard .btn,
+.dashboard button,
+.dashboard a,
+.dashboard .module-nav button,
+.dashboard .module-nav a {
+  color: #ffffff !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Elementos de navegación */
+.module-nav,
+.module-nav *,
+.module-content,
+.module-content * {
+  color: #ffffff !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Headers de módulos */
+.module-header,
+.module-header h2,
+.module-header h3 {
+  color: #ffffff !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+}
+
 /* Header del Dashboard */
 .dashboard-header {
   display: flex;
@@ -69,16 +125,19 @@
 }
 
 .user-details h3 {
-  color: var(--text-inverse);
+  color: #ffffff !important;
   margin-bottom: var(--spacing-xs);
   font-size: var(--font-size-lg);
   font-weight: var(--font-weight-bold);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .user-details p {
-  color: rgba(255, 255, 255, 0.8);
+  color: #ffffff !important;
+  opacity: 0.9;
   margin-bottom: var(--spacing-xs);
   font-size: var(--font-size-sm);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .user-status {
@@ -90,6 +149,8 @@
   font-size: var(--font-size-xs);
   font-weight: var(--font-weight-medium);
   backdrop-filter: blur(10px);
+  color: #ffffff !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .user-status.online::before {
@@ -214,16 +275,19 @@
 .stat-content h3 {
   font-size: var(--font-size-3xl);
   font-weight: var(--font-weight-bold);
-  color: var(--text-primary);
+  color: #ffffff !important;
   margin-bottom: var(--spacing-xs);
   line-height: 1;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
 }
 
 .stat-content p {
-  color: var(--text-secondary);
+  color: #ffffff !important;
+  opacity: 0.9;
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-medium);
   margin-bottom: var(--spacing-sm);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
 }
 
 .stat-trend {
