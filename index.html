@@ -476,6 +476,27 @@
                     authSection.style.display = 'block';
                 }
                 
+                // Configurar funcionalidad de pestañas
+                const tabButtons = document.querySelectorAll('.tab-button');
+                tabButtons.forEach(function(button) {
+                    button.addEventListener('click', function(e) {
+                        const targetTab = e.target.getAttribute('data-tab');
+                        
+                        // Remover active de todos
+                        tabButtons.forEach(function(btn) { btn.classList.remove('active'); });
+                        document.querySelectorAll('.tab-content').forEach(function(content) { 
+                            content.classList.remove('active'); 
+                        });
+                        
+                        // Activar seleccionado
+                        e.target.classList.add('active');
+                        const targetContent = document.getElementById(targetTab + 'Tab');
+                        if (targetContent) {
+                            targetContent.classList.add('active');
+                        }
+                    });
+                });
+                
                 // Configurar funcionalidad básica de demo
                 const demoBtn = document.getElementById('demoCredentialsBtn');
                 if (demoBtn) {

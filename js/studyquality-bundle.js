@@ -261,6 +261,9 @@ class AuthManager {
     }
     
     setupEventListeners() {
+        // Tab switching
+        this.setupTabSwitching();
+        
         // Login form
         const loginForm = DOM.$('#loginForm');
         if (loginForm) {
@@ -290,6 +293,40 @@ class AuthManager {
         if (demoBtn) {
             demoBtn.addEventListener('click', () => this.fillDemoCredentials());
         }
+    }
+    
+    setupTabSwitching() {
+        // Configurar botones de pestañas
+        const tabButtons = DOM.$$('.tab-button');
+        tabButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                const targetTab = e.target.getAttribute('data-tab');
+                this.switchTab(targetTab);
+            });
+        });
+    }
+    
+    switchTab(targetTab) {
+        // Remover active de todos los botones y contenidos
+        const allTabButtons = DOM.$$('.tab-button');
+        const allTabContents = DOM.$$('.tab-content');
+        
+        allTabButtons.forEach(btn => DOM.removeClass(btn, 'active'));
+        allTabContents.forEach(content => DOM.removeClass(content, 'active'));
+        
+        // Activar el botón y contenido seleccionado
+        const targetButton = DOM.$(`[data-tab="${targetTab}"]`);
+        const targetContent = DOM.$(`#${targetTab}Tab`);
+        
+        if (targetButton) {
+            DOM.addClass(targetButton, 'active');
+        }
+        
+        if (targetContent) {
+            DOM.addClass(targetContent, 'active');
+        }
+        
+        console.log(`✅ Cambiado a pestaña: ${targetTab}`);
     }
     
     handleLogin() {
