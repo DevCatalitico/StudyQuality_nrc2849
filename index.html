@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Gestión - Calidad en Software | StudyQuality</title>
+    <meta name="description" content="Sistema de gestión de usuarios basado en principios de calidad de software de Guillermo Pantaleo">
+    <meta name="keywords" content="calidad software, gestión usuarios, pruebas automatizadas, integración continua">
+    <meta name="author" content="StudyQuality NRC2849">
+    
+    <!-- Favicons -->
+    <link rel="icon" href="./assets/icons/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="./assets/icons/apple-touch-icon.png">
+    
+    <!-- CSS Modules -->
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./css/auth.css">
+    <link rel="stylesheet" href="./css/dashboard.css">
+    <link rel="stylesheet" href="./css/users.css">
+    <link rel="stylesheet" href="./css/modals.css">
+    <link rel="stylesheet" href="./css/reports.css">
+    <link rel="stylesheet" href="./css/responsive.css">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Sistema de Gestión - StudyQuality">
+    <meta property="og:description" content="Prototipo de calidad de software basado en principios de Pantaleo">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://devcatalitico.github.io/StudyQuality_nrc2849/">
+    <meta property="og:image" content="https://devcatalitico.github.io/StudyQuality_nrc2849/assets/images/og-image.png">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loadingScreen" class="loading-screen">
+        <div class="loading-content">
+            <div class="spinner"></div>
+            <h2>StudyQuality</h2>
+            <p>Cargando sistema de calidad...</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Header Principal -->
+        <header class="header">
+            <div class="header-content">
+                <h1>🚀 Sistema de Gestión de Usuarios</h1>
+                <p>Prototipo basado en principios de Calidad de Software - Pantaleo</p>
+                <div class="version-info">
+                    <span class="version">v1.0.0</span>
+                    <span class="build">Build: CI-2024</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Sección de Autenticación -->
+        <section id="authSection" class="auth-section">
+            <div class="auth-container">
+                <div class="auth-tabs">
+                    <button class="tab-button active" data-tab="login">Iniciar Sesión</button>
+                    <button class="tab-button" data-tab="register">Registrarse</button>
+                </div>
+
+                <!-- Tab de Login -->
+                <div id="loginTab" class="tab-content active">
+                    <div class="form-header">
+                        <h2>Iniciar Sesión</h2>
+                        <p>Accede al sistema de gestión</p>
+                    </div>
+                    <form id="loginForm" class="auth-form">
+                        <div class="form-group">
+                            <label for="loginEmail">Email:</label>
+                            <input type="email" id="loginEmail" required autocomplete="email">
+                            <span class="form-error" id="loginEmailError"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="loginPassword">Contraseña:</label>
+                            <div class="password-field">
+                                <input type="password" id="loginPassword" required autocomplete="current-password">
+                                <button type="button" class="password-toggle" data-target="loginPassword">👁️</button>
+                            </div>
+                            <span class="form-error" id="loginPasswordError"></span>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            <span class="btn-text">Ingresar</span>
+                            <span class="btn-spinner"></span>
+                        </button>
+                    </form>
+                    <div class="demo-credentials">
+                        <h4>Credenciales de Demo:</h4>
+                        <p><strong>Email:</strong> admin@demo.com</p>
+                        <p><strong>Contraseña:</strong> demo123</p>
+                    </div>
+                </div>
+
+                <!-- Tab de Registro -->
+                <div id="registerTab" class="tab-content">
+                    <div class="form-header">
+                        <h2>Crear Cuenta</h2>
+                        <p>Regístrate en el sistema</p>
+                    </div>
+                    <form id="registerForm" class="auth-form">
+                        <div class="form-group">
+                            <label for="regName">Nombre Completo:</label>
+                            <input type="text" id="regName" required autocomplete="name">
+                            <span class="form-error" id="regNameError"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="regEmail">Email:</label>
+                            <input type="email" id="regEmail" required autocomplete="email">
+                            <span class="form-error" id="regEmailError"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="regPassword">Contraseña:</label>
+                            <div class="password-field">
+                                <input type="password" id="regPassword" required autocomplete="new-password">
+                                <button type="button" class="password-toggle" data-target="regPassword">👁️</button>
+                            </div>
+                            <div class="password-strength" id="passwordStrength"></div>
+                            <span class="form-error" id="regPasswordError"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="regRole">Rol:</label>
+                            <select id="regRole" required>
+                                <option value="">Seleccionar rol</option>
+                                <option value="user">Usuario</option>
+                                <option value="admin">Administrador</option>
+                            </select>
+                            <span class="form-error" id="regRoleError"></span>
+                        </div>
+                        <button type="submit" class="btn btn-success">
+                            <span class="btn-text">Registrarse</span>
+                            <span class="btn-spinner"></span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dashboard Principal -->
+        <main id="dashboard" class="dashboard">
+            <!-- Header del Dashboard -->
+            <div class="dashboard-header">
+                <div class="user-info">
+                    <div class="avatar" id="userAvatar">A</div>
+                    <div class="user-details">
+                        <h3 id="userName">Usuario Administrador</h3>
+                        <p id="userRole">Administrador del Sistema</p>
+                        <span class="user-status online" id="userStatus">En línea</span>
+                    </div>
+                </div>
+                <div class="header-actions">
+                    <button class="btn btn-outline" id="notificationsBtn">
+                        🔔 <span class="notification-count">3</span>
+                    </button>
+                    <button class="btn btn-danger" id="logoutBtn">Cerrar Sesión</button>
+                </div>
+            </div>
+
+            <!-- Estadísticas del Sistema -->
+            <section class="stats-section">
+                <div class="stats-grid">
+                    <div class="stat-card primary">
+                        <div class="stat-icon">👥</div>
+                        <div class="stat-content">
+                            <h3 id="totalUsers">0</h3>
+                            <p>Usuarios Registrados</p>
+                            <span class="stat-trend up">+12% este mes</span>
+                        </div>
+                    </div>
+                    <div class="stat-card success">
+                        <div class="stat-icon">✅</div>
+                        <div class="stat-content">
+                            <h3 id="activeUsers">0</h3>
+                            <p>Usuarios Activos</p>
+                            <span class="stat-trend up">+8% esta semana</span>
+                        </div>
+                    </div>
+                    <div class="stat-card warning">
+                        <div class="stat-icon">📊</div>
+                        <div class="stat-content">
+                            <h3 id="systemUptime">99.5%</h3>
+                            <p>Disponibilidad</p>
+                            <span class="stat-trend stable">Estable</span>
+                        </div>
+                    </div>
+                    <div class="stat-card info">
+                        <div class="stat-icon">⚡</div>
+                        <div class="stat-content">
+                            <h3 id="avgResponseTime">24ms</h3>
+                            <p>Tiempo de Respuesta</p>
+                            <span class="stat-trend down">-15% optimizado</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Navegación de Módulos -->
+            <nav class="module-nav">
+                <button class="module-btn active" data-module="users">
+                    <span class="module-icon">👥</span>
+                    <span class="module-text">Gestión de Usuarios</span>
+                </button>
+                <button class="module-btn" data-module="reports">
+                    <span class="module-icon">📊</span>
+                    <span class="module-text">Reportes</span>
+                </button>
+                <button class="module-btn" data-module="analytics">
+                    <span class="module-icon">📈</span>
+                    <span class="module-text">Análisis</span>
+                </button>
+                <button class="module-btn" data-module="settings">
+                    <span class="module-icon">⚙️</span>
+                    <span class="module-text">Configuración</span>
+                </button>
+            </nav>
+
+            <!-- Módulo de Gestión de Usuarios -->
+            <section id="usersModule" class="module-content active">
+                <div class="module-header">
+                    <h2>Gestión de Usuarios</h2>
+                    <div class="module-actions">
+                        <button class="btn btn-primary" id="addUserBtn">
+                            <span class="btn-icon">➕</span>
+                            Agregar Usuario
+                        </button>
+                        <button class="btn btn-outline" id="bulkActionsBtn">
+                            <span class="btn-icon">⚙️</span>
+                            Acciones Masivas
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Filtros y Búsqueda -->
+                <div class="filters-section">
+                    <div class="search-bar">
+                        <input type="text" id="searchInput" placeholder="Buscar usuarios por nombre o email...">
+                        <button class="search-btn">🔍</button>
+                    </div>
+                    <div class="filter-controls">
+                        <select id="statusFilter" class="filter-select">
+                            <option value="">Todos los estados</option>
+                            <option value="active">Activos</option>
+                            <option value="inactive">Inactivos</option>
+                        </select>
+                        <select id="roleFilter" class="filter-select">
+                            <option value="">Todos los roles</option>
+                            <option value="admin">Administradores</option>
+                            <option value="user">Usuarios</option>
+                        </select>
+                        <button class="btn btn-outline" id="clearFiltersBtn">Limpiar Filtros</button>
+                    </div>
+                </div>
+
+                <!-- Tabla de Usuarios -->
+                <div class="table-container">
+                    <table class="users-table" id="usersTable">
+                        <thead>
+                            <tr>
+                                <th>
+                                    <input type="checkbox" id="selectAllUsers">
+                                </th>
+                                <th data-sort="id">ID <span class="sort-indicator"></span></th>
+                                <th data-sort="name">Nombre <span class="sort-indicator"></span></th>
+                                <th data-sort="email">Email <span class="sort-indicator"></span></th>
+                                <th data-sort="role">Rol <span class="sort-indicator"></span></th>
+                                <th data-sort="status">Estado <span class="sort-indicator"></span></th>
+                                <th data-sort="registeredDate">Fecha de Registro <span class="sort-indicator"></span></th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="usersTableBody">
+                            <!-- Los usuarios se cargarán dinámicamente -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Paginación -->
+                <div class="pagination-container">
+                    <div class="pagination-info">
+                        Mostrando <span id="paginationStart">1</span>-<span id="paginationEnd">10</span> de <span id="paginationTotal">0</span> usuarios
+                    </div>
+                    <div class="pagination-controls">
+                        <button class="btn btn-outline" id="prevPageBtn" disabled>← Anterior</button>
+                        <div class="page-numbers" id="pageNumbers"></div>
+                        <button class="btn btn-outline" id="nextPageBtn">Siguiente →</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Módulo de Reportes -->
+            <section id="reportsModule" class="module-content">
+                <div class="module-header">
+                    <h2>Reportes y Análisis</h2>
+                    <div class="module-actions">
+                        <button class="btn btn-primary" id="generateReportBtn">
+                            <span class="btn-icon">📄</span>
+                            Generar Reporte
+                        </button>
+                    </div>
+                </div>
+
+                <div class="reports-grid">
+                    <div class="report-card">
+                        <h3>Reporte de Usuarios</h3>
+                        <p>Estadísticas completas de usuarios registrados</p>
+                        <button class="btn btn-primary" data-report="users">Generar</button>
+                    </div>
+                    <div class="report-card">
+                        <h3>Reporte de Actividad</h3>
+                        <p>Análisis de actividad y uso del sistema</p>
+                        <button class="btn btn-primary" data-report="activity">Generar</button>
+                    </div>
+                    <div class="report-card">
+                        <h3>Exportar Datos</h3>
+                        <p>Exportar información en múltiples formatos</p>
+                        <div class="export-buttons">
+                            <button class="btn btn-outline" data-export="csv">CSV</button>
+                            <button class="btn btn-outline" data-export="json">JSON</button>
+                            <button class="btn btn-outline" data-export="pdf">PDF</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Área de Gráficos -->
+                <div class="charts-section">
+                    <div class="chart-container">
+                        <div class="chart-placeholder">
+                            <h3>📊 Gráfico de Usuarios por Mes</h3>
+                            <p>Visualización de crecimiento de usuarios</p>
+                            <div class="mock-chart">
+                                <div class="chart-bars">
+                                    <div class="bar" style="height: 40%"></div>
+                                    <div class="bar" style="height: 60%"></div>
+                                    <div class="bar" style="height: 80%"></div>
+                                    <div class="bar" style="height: 45%"></div>
+                                    <div class="bar" style="height: 90%"></div>
+                                    <div class="bar" style="height: 70%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Módulo de Análisis -->
+            <section id="analyticsModule" class="module-content">
+                <div class="module-header">
+                    <h2>Análisis del Sistema</h2>
+                </div>
+                <div class="analytics-content">
+                    <div class="ci-status">
+                        <h3>Estado de Integración Continua</h3>
+                        <div class="ci-pipeline" id="ciPipeline">
+                            <!-- Pipeline status se carga dinámicamente -->
+                        </div>
+                    </div>
+                    <div class="performance-metrics">
+                        <h3>Métricas de Rendimiento</h3>
+                        <div class="metrics-grid" id="performanceMetrics">
+                            <!-- Métricas se cargan dinámicamente -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Módulo de Configuración -->
+            <section id="settingsModule" class="module-content">
+                <div class="module-header">
+                    <h2>Configuración del Sistema</h2>
+                </div>
+                <div class="settings-content">
+                    <div class="settings-section">
+                        <h3>Gestión de Datos</h3>
+                        <div class="settings-actions">
+                            <button class="btn btn-warning" id="backupBtn">Crear Respaldo</button>
+                            <button class="btn btn-primary" id="restoreBtn">Restaurar Datos</button>
+                            <button class="btn btn-success" id="runCiBtn">Ejecutar CI/CD</button>
+                        </div>
+                    </div>
+                    <div class="settings-section">
+                        <h3>Configuración de Pruebas</h3>
+                        <div class="test-controls">
+                            <button class="btn btn-outline" id="runTestsBtn">Ejecutar Pruebas</button>
+                            <button class="btn btn-outline" id="viewLogsBtn">Ver Logs</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Sistema de Notificaciones -->
+        <div id="notificationContainer" class="notification-container"></div>
+
+        <!-- Loading Overlay -->
+        <div id="loadingOverlay" class="loading-overlay">
+            <div class="loading-content">
+                <div class="spinner"></div>
+                <p id="loadingMessage">Procesando...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para Gestión de Usuarios -->
+    <div id="userModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Agregar Usuario</h2>
+                <button class="modal-close" id="closeModalBtn">&times;</button>
+            </div>
+            <form id="userForm" class="modal-form">
+                <input type="hidden" id="editUserId">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="modalName">Nombre Completo:</label>
+                        <input type="text" id="modalName" required>
+                        <span class="form-error" id="modalNameError"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="modalEmail">Email:</label>
+                        <input type="email" id="modalEmail" required>
+                        <span class="form-error" id="modalEmailError"></span>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="modalRole">Rol:</label>
+                        <select id="modalRole" required>
+                            <option value="">Seleccionar rol</option>
+                            <option value="user">Usuario</option>
+                            <option value="admin">Administrador</option>
+                        </select>
+                        <span class="form-error" id="modalRoleError"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="modalStatus">Estado:</label>
+                        <select id="modalStatus" required>
+                            <option value="active">Activo</option>
+                            <option value="inactive">Inactivo</option>
+                        </select>
+                        <span class="form-error" id="modalStatusError"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="modalNotes">Notas:</label>
+                    <textarea id="modalNotes" rows="3" placeholder="Información adicional del usuario..."></textarea>
+                </div>
+                <div class="modal-actions">
+                    <button type="submit" class="btn btn-success">
+                        <span class="btn-text">Guardar</span>
+                        <span class="btn-spinner"></span>
+                    </button>
+                    <button type="button" class="btn btn-danger" id="cancelModalBtn">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- JavaScript Modules -->
+    <script src="./js/utils/constants.js"></script>
+    <script src="./js/utils/helpers.js"></script>
+    <script src="./js/utils/validators.js"></script>
+    <script src="./js/utils/storage.js"></script>
+    <script src="./js/utils/api.js"></script>
+    <script src="./js/modules/auth.js"></script>
+    <script src="./js/modules/dashboard.js"></script>
+    <script src="./js/modules/users.js"></script>
+    <script src="./js/modules/reports.js"></script>
+    <script src="./js/modules/analytics.js"></script>
+    <script src="./js/modules/notifications.js"></script>
+    <script src="./js/modules/testing.js"></script>
+    <script src="./js/app.js"></script>
+
+    <!-- Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('./sw.js')
+                    .then(function(registration) {
+                        console.log('SW registered: ', registration);
+                    })
+                    .catch(function(registrationError) {
+                        console.log('SW registration failed: ', registrationError);
+                    });
+            });
+        }
+    </script>
+</body>
+</html>
