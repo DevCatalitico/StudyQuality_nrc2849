@@ -437,31 +437,58 @@ class AuthManager {
     
     showAuth() {
         const authSection = DOM.$('#authSection');
-        const dashboardSection = DOM.$('#dashboardSection');
+        const dashboardSection = DOM.$('#dashboard');
         
-        if (authSection) DOM.show(authSection);
-        if (dashboardSection) DOM.hide(dashboardSection);
+        if (authSection) {
+            DOM.show(authSection);
+        }
+        if (dashboardSection) {
+            DOM.hide(dashboardSection);
+            DOM.removeClass(dashboardSection, 'active');
+        }
+        
+        console.log('✅ Mostrando sección de autenticación');
     }
     
     showDashboard() {
         const authSection = DOM.$('#authSection');
-        const dashboardSection = DOM.$('#dashboardSection');
+        const dashboardSection = DOM.$('#dashboard');
         
-        if (authSection) DOM.hide(authSection);
-        if (dashboardSection) DOM.show(dashboardSection);
+        if (authSection) {
+            DOM.hide(authSection);
+        }
+        if (dashboardSection) {
+            DOM.show(dashboardSection);
+            DOM.addClass(dashboardSection, 'active');
+        }
         
         this.updateDashboardInfo();
+        console.log('✅ Mostrando dashboard - Usuario logueado:', this.currentUser?.name);
     }
     
     updateDashboardInfo() {
         const userNameSpan = DOM.$('#userName');
-        const userEmailSpan = DOM.$('#userEmail');
+        const userRoleSpan = DOM.$('#userRole');
+        const userStatusSpan = DOM.$('#userStatus');
+        const userAvatar = DOM.$('#userAvatar');
         
         if (userNameSpan && this.currentUser) {
             userNameSpan.textContent = this.currentUser.name;
+            console.log('✅ Nombre actualizado:', this.currentUser.name);
         }
-        if (userEmailSpan && this.currentUser) {
-            userEmailSpan.textContent = this.currentUser.email;
+        
+        if (userRoleSpan && this.currentUser) {
+            const roleText = this.currentUser.role === 'admin' ? 'Administrador del Sistema' : 'Usuario del Sistema';
+            userRoleSpan.textContent = roleText;
+        }
+        
+        if (userStatusSpan) {
+            userStatusSpan.textContent = 'En línea';
+            userStatusSpan.className = 'user-status online';
+        }
+        
+        if (userAvatar && this.currentUser) {
+            userAvatar.textContent = this.currentUser.name.charAt(0).toUpperCase();
         }
     }
     
